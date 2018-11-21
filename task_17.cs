@@ -126,27 +126,20 @@ namespace ConsoleApp1
             Console.WriteLine($"Новый цвет ТС: {SecondVehicle.Color}");
             Console.WriteLine($"Новая скорость ТС: {SecondVehicle.Speed} км/ч");
             Console.WriteLine("-------------------");
-            Motorcycle ThirdVehicle = new Motorcycle("KAWASAKI", "Белый", 
-                105);
-            Motorcycle FourthVehicle = new Motorcycle("HONDA", "Черный", 150);
-            Motorcycle FifthVehicle = new Motorcycle("Harley Davidson", "Серый",
-                90);
-            Car SixthVehicle = new Car("Cadillac", "Золотистый", 90);
-            Car SeventhVehicle = new Car("Chevrolet", "Зеленый", 120);
-            Car EighthVehicle = new Car("Daewoo", "Черный", 60);
-            Car NinthVehicle = new Car("Daewoo", "Черный", 60);
-            Car TenthVehicle = new Car("Ferrari", "Красный", 180);
+            string[] motos = new string[] { "KAWASAKI", "HONDA", "Harley Davidson" };
+            string[] cars = new string[] { "Cadillac", "Chevrolet", "Daewoo Davidson", "Ferrari" };
+            string[] colors = new string[] { "Черный", "Белый", "Серый", "Золотистый", "Красный", "Зеленый" };
             Vehicle[] Polymorphism = new Vehicle[10];
-            Polymorphism[0] = FirstVehicle;
-            Polymorphism[1] = SecondVehicle;
-            Polymorphism[2] = ThirdVehicle;
-            Polymorphism[3] = FourthVehicle;
-            Polymorphism[4] = FifthVehicle;
-            Polymorphism[5] = SixthVehicle;
-            Polymorphism[6] = SeventhVehicle;
-            Polymorphism[7] = EighthVehicle;
-            Polymorphism[8] = NinthVehicle;
-            Polymorphism[9] = TenthVehicle;
+            for (int i = 0; i < 4; i++) 
+            {
+                Polymorphism[i] = new Car(cars[rand.Next(0, 3)], colors[rand.Next(0, 6)], rand.Next(60, 150));
+            }
+            for (int i = 4; i < 8; i++)
+            {
+                Polymorphism[i] = new Motorcycle(motos[rand.Next(0, 3)], colors[rand.Next(0, 6)], rand.Next(60, 150));
+            }
+            Polymorphism[8] = FirstVehicle;
+            Polymorphism[9] = SecondVehicle;
             for (int i = Polymorphism.Length - 1; i >= 1; i--)
             {
                 int j = rand.Next(i + 1);
