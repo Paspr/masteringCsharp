@@ -7,26 +7,26 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Vehicle // класс в системе распознавания ТС
+    class Vehicle // РєР»Р°СЃСЃ РІ СЃРёСЃС‚РµРјРµ СЂР°СЃРїРѕР·РЅР°РІР°РЅРёСЏ РўРЎ
     {
-        private String _model; // модель ТС
+        private String _model; // РјРѕРґРµР»СЊ РўРЎ
         public String Model { get { return _model; } set { _model = value; } }
-        private String _color; // цвет ТС
+        private String _color; // С†РІРµС‚ РўРЎ
         public String Color { get { return _color; } set { _color = value; } }
-        private double _speed; // скорость ТС
+        private double _speed; // СЃРєРѕСЂРѕСЃС‚СЊ РўРЎ
         public double Speed { get { return _speed; } set { _speed = value; } }
-        public virtual string GetWheelsNumber() { return "кол-во колес не " +
-                "задано"; } // кол-во колес ТС
+        public virtual string GetWheelsNumber() { return "РєРѕР»-РІРѕ РєРѕР»РµСЃ РЅРµ " +
+                "Р·Р°РґР°РЅРѕ"; } // РєРѕР»-РІРѕ РєРѕР»РµСЃ РўРЎ
 
         public void ChangeColor(String new_color) { Color = new_color; }
 
         public void ChangeSpeed(double add_speed) { Speed += add_speed; }
     }
 
-    class Motorcycle : Vehicle // Наследование мотоцикла
+    class Motorcycle : Vehicle // РќР°СЃР»РµРґРѕРІР°РЅРёРµ РјРѕС‚РѕС†РёРєР»Р°
     {
-        public override string GetWheelsNumber() { return "Мотоцикл - 2" +
-                "колеса"; }
+        public override string GetWheelsNumber() { return "РњРѕС‚РѕС†РёРєР» - 2" +
+                "РєРѕР»РµСЃР°"; }
 
         public Motorcycle(String m, String c, double s)
         {
@@ -36,10 +36,10 @@ namespace ConsoleApp1
         }
     }
 
-    class Car : Vehicle // Наследование автомобиля
+    class Car : Vehicle // РќР°СЃР»РµРґРѕРІР°РЅРёРµ Р°РІС‚РѕРјРѕР±РёР»СЏ
     {
-        public override string GetWheelsNumber() { return "Автомобиль - 4" +
-                " колеса"; }
+        public override string GetWheelsNumber() { return "РђРІС‚РѕРјРѕР±РёР»СЊ - 4" +
+                " РєРѕР»РµСЃР°"; }
 
         public Car(String m, String c, double s)
         {
@@ -49,24 +49,24 @@ namespace ConsoleApp1
         }
     }
 
-    class Person // класс пользователя в системе электронного обучения
+    class Person // РєР»Р°СЃСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ СЃРёСЃС‚РµРјРµ СЌР»РµРєС‚СЂРѕРЅРЅРѕРіРѕ РѕР±СѓС‡РµРЅРёСЏ
     {
-        private String _name; // ФИО
+        private String _name; // Р¤РРћ
         public String Name { get { return _name; } set { _name = value; } }
-        private int _age; // возраст
+        private int _age; // РІРѕР·СЂР°СЃС‚
         public int Age { get { return _age; } set { _age = value; } }
-        public virtual string Role() { return "Роль не задана"; } // Роль в 
-                                                                  // системе
-                                                                  // обучения
+        public virtual string Role() { return "Р РѕР»СЊ РЅРµ Р·Р°РґР°РЅР°"; } // Р РѕР»СЊ РІ 
+                                                                  // СЃРёСЃС‚РµРјРµ
+                                                                  // РѕР±СѓС‡РµРЅРёСЏ
     }
-    class Student : Person // класс ученика
+    class Student : Person // РєР»Р°СЃСЃ СѓС‡РµРЅРёРєР°
     {
-        public override string Role() { return "Студент"; }
-        public string[] subjects; // Изучаемые предметы
-        public void ChangeAgeNewCourse(int new_age) { Age += new_age; } // Увеличение
-                                                                        // возраста 
-                                                                        // с новым 
-                                                                        // курсом
+        public override string Role() { return "РЎС‚СѓРґРµРЅС‚"; }
+        public string[] subjects; // РР·СѓС‡Р°РµРјС‹Рµ РїСЂРµРґРјРµС‚С‹
+        public void ChangeAgeNewCourse(int new_age) { Age += new_age; } // РЈРІРµР»РёС‡РµРЅРёРµ
+                                                                        // РІРѕР·СЂР°СЃС‚Р° 
+                                                                        // СЃ РЅРѕРІС‹Рј 
+                                                                        // РєСѓСЂСЃРѕРј
 
         public void AddSubject(string add_subject)
         {
@@ -81,12 +81,12 @@ namespace ConsoleApp1
             subjects = s;
         }
     }
-    class Teacher : Person // класс преподавателя
+    class Teacher : Person // РєР»Р°СЃСЃ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ
     {
-        public int GroupsNumber; // количество групп студентов у преподавателя
-        public override string Role() { return "Преподаватель"; } // Роль в 
-                                                                  // системе 
-                                                                  // обучения
+        public int GroupsNumber; // РєРѕР»РёС‡РµСЃС‚РІРѕ РіСЂСѓРїРї СЃС‚СѓРґРµРЅС‚РѕРІ Сѓ РїСЂРµРїРѕРґР°РІР°С‚РµР»СЏ
+        public override string Role() { return "РџСЂРµРїРѕРґР°РІР°С‚РµР»СЊ"; } // Р РѕР»СЊ РІ 
+                                                                  // СЃРёСЃС‚РµРјРµ 
+                                                                  // РѕР±СѓС‡РµРЅРёСЏ
         public void ChangeGroupsNumber(int new_number) { GroupsNumber = 
                 new_number; }
 
@@ -103,32 +103,32 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Random rand = new Random();
-            Console.WriteLine("Объекты транспортных средств");
-            Car FirstVehicle = new Car("BMW", "Серый", 70.5);
-            Console.WriteLine($"Объект: {FirstVehicle}");
-            Console.WriteLine($"Модель ТС: {FirstVehicle.Model}");
-            Console.WriteLine($"Цвет ТС: {FirstVehicle.Color}");
-            Console.WriteLine($"Скорость ТС: {FirstVehicle.Speed} км/ч");
+            Console.WriteLine("РћР±СЉРµРєС‚С‹ С‚СЂР°РЅСЃРїРѕСЂС‚РЅС‹С… СЃСЂРµРґСЃС‚РІ");
+            Car FirstVehicle = new Car("BMW", "РЎРµСЂС‹Р№", 70.5);
+            Console.WriteLine($"РћР±СЉРµРєС‚: {FirstVehicle}");
+            Console.WriteLine($"РњРѕРґРµР»СЊ РўРЎ: {FirstVehicle.Model}");
+            Console.WriteLine($"Р¦РІРµС‚ РўРЎ: {FirstVehicle.Color}");
+            Console.WriteLine($"РЎРєРѕСЂРѕСЃС‚СЊ РўРЎ: {FirstVehicle.Speed} РєРј/С‡");
             Console.WriteLine(FirstVehicle.GetWheelsNumber());
-            FirstVehicle.ChangeColor("Красный");
+            FirstVehicle.ChangeColor("РљСЂР°СЃРЅС‹Р№");
             FirstVehicle.ChangeSpeed(-20);
-            Console.WriteLine($"Новый цвет ТС: {FirstVehicle.Color}");
-            Console.WriteLine($"Новая скорость ТС: {FirstVehicle.Speed} км/ч");
-            Motorcycle SecondVehicle = new Motorcycle("Yamaha", "Зеленый",
+            Console.WriteLine($"РќРѕРІС‹Р№ С†РІРµС‚ РўРЎ: {FirstVehicle.Color}");
+            Console.WriteLine($"РќРѕРІР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ РўРЎ: {FirstVehicle.Speed} РєРј/С‡");
+            Motorcycle SecondVehicle = new Motorcycle("Yamaha", "Р—РµР»РµРЅС‹Р№",
                 175);
-            Console.WriteLine($"Объект: {SecondVehicle}");
-            Console.WriteLine($"Модель ТС: {SecondVehicle.Model}");
-            Console.WriteLine($"Цвет ТС: {SecondVehicle.Color}");
-            Console.WriteLine($"Скорость ТС: {SecondVehicle.Speed} км/ч");
+            Console.WriteLine($"РћР±СЉРµРєС‚: {SecondVehicle}");
+            Console.WriteLine($"РњРѕРґРµР»СЊ РўРЎ: {SecondVehicle.Model}");
+            Console.WriteLine($"Р¦РІРµС‚ РўРЎ: {SecondVehicle.Color}");
+            Console.WriteLine($"РЎРєРѕСЂРѕСЃС‚СЊ РўРЎ: {SecondVehicle.Speed} РєРј/С‡");
             Console.WriteLine(SecondVehicle.GetWheelsNumber());
-            SecondVehicle.ChangeColor("Черный");
+            SecondVehicle.ChangeColor("Р§РµСЂРЅС‹Р№");
             SecondVehicle.ChangeSpeed(30);
-            Console.WriteLine($"Новый цвет ТС: {SecondVehicle.Color}");
-            Console.WriteLine($"Новая скорость ТС: {SecondVehicle.Speed} км/ч");
+            Console.WriteLine($"РќРѕРІС‹Р№ С†РІРµС‚ РўРЎ: {SecondVehicle.Color}");
+            Console.WriteLine($"РќРѕРІР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ РўРЎ: {SecondVehicle.Speed} РєРј/С‡");
             Console.WriteLine("-------------------");
             string[] motos = new string[] { "KAWASAKI", "HONDA", "Harley Davidson" };
             string[] cars = new string[] { "Cadillac", "Chevrolet", "Daewoo Davidson", "Ferrari" };
-            string[] colors = new string[] { "Черный", "Белый", "Серый", "Золотистый", "Красный", "Зеленый" };
+            string[] colors = new string[] { "Р§РµСЂРЅС‹Р№", "Р‘РµР»С‹Р№", "РЎРµСЂС‹Р№", "Р—РѕР»РѕС‚РёСЃС‚С‹Р№", "РљСЂР°СЃРЅС‹Р№", "Р—РµР»РµРЅС‹Р№" };
             Vehicle[] Polymorphism = new Vehicle[10];
             for (int i = 0; i < 4; i++) 
             {
@@ -152,36 +152,36 @@ namespace ConsoleApp1
                 Console.WriteLine(Polymorphism[i].GetWheelsNumber());
             }
             Console.WriteLine("-------------------");
-            Console.WriteLine("Объекты в системе обучения");
-            Student NewStudent = new Student("Александр Евгеньевич Артемов", 
-                20, new string[3] { "Дискретная математика", "Программирование",
-                "Физика" });
-            Console.WriteLine($"Объект: {NewStudent}");
-            Console.WriteLine($"Роль объекта в системе: {NewStudent.Role()}");
-            Console.WriteLine($"ФИО: {NewStudent.Name}");
-            Console.WriteLine($"Возраст (лет): {NewStudent.Age}");
-            Console.Write("Изучаемые предметы: ");
+            Console.WriteLine("РћР±СЉРµРєС‚С‹ РІ СЃРёСЃС‚РµРјРµ РѕР±СѓС‡РµРЅРёСЏ");
+            Student NewStudent = new Student("РђР»РµРєСЃР°РЅРґСЂ Р•РІРіРµРЅСЊРµРІРёС‡ РђСЂС‚РµРјРѕРІ", 
+                20, new string[3] { "Р”РёСЃРєСЂРµС‚РЅР°СЏ РјР°С‚РµРјР°С‚РёРєР°", "РџСЂРѕРіСЂР°РјРјРёСЂРѕРІР°РЅРёРµ",
+                "Р¤РёР·РёРєР°" });
+            Console.WriteLine($"РћР±СЉРµРєС‚: {NewStudent}");
+            Console.WriteLine($"Р РѕР»СЊ РѕР±СЉРµРєС‚Р° РІ СЃРёСЃС‚РµРјРµ: {NewStudent.Role()}");
+            Console.WriteLine($"Р¤РРћ: {NewStudent.Name}");
+            Console.WriteLine($"Р’РѕР·СЂР°СЃС‚ (Р»РµС‚): {NewStudent.Age}");
+            Console.Write("РР·СѓС‡Р°РµРјС‹Рµ РїСЂРµРґРјРµС‚С‹: ");
             for (int i = 0; i < NewStudent.subjects.Length; i++)
                 Console.Write($" {NewStudent.subjects[i]}");
             Console.WriteLine();
             NewStudent.ChangeAgeNewCourse(1);
-            NewStudent.AddSubject("Теория вероятностей");
-            Console.WriteLine($"Возраст на новом курсе (лет): {NewStudent.Age}");
-            Console.Write("Изучаемые предметы на новом курсе: ");
+            NewStudent.AddSubject("РўРµРѕСЂРёСЏ РІРµСЂРѕСЏС‚РЅРѕСЃС‚РµР№");
+            Console.WriteLine($"Р’РѕР·СЂР°СЃС‚ РЅР° РЅРѕРІРѕРј РєСѓСЂСЃРµ (Р»РµС‚): {NewStudent.Age}");
+            Console.Write("РР·СѓС‡Р°РµРјС‹Рµ РїСЂРµРґРјРµС‚С‹ РЅР° РЅРѕРІРѕРј РєСѓСЂСЃРµ: ");
             for (int i = 0; i < NewStudent.subjects.Length; i++)
                 Console.Write($" {NewStudent.subjects[i]}");
             Console.WriteLine();
-            Teacher NewTeacher = new Teacher("Андрей Григорьевич Белов", 57, 
+            Teacher NewTeacher = new Teacher("РђРЅРґСЂРµР№ Р“СЂРёРіРѕСЂСЊРµРІРёС‡ Р‘РµР»РѕРІ", 57, 
                 17);
-            Console.WriteLine($"Объект: {NewTeacher}");
-            Console.WriteLine($"Роль объекта в системе: {NewTeacher.Role()}");
-            Console.WriteLine($"ФИО: {NewTeacher.Name}");
-            Console.WriteLine($"Возраст (лет): {NewTeacher.Age}");
-            Console.WriteLine($"Количество групп студентов: " +
+            Console.WriteLine($"РћР±СЉРµРєС‚: {NewTeacher}");
+            Console.WriteLine($"Р РѕР»СЊ РѕР±СЉРµРєС‚Р° РІ СЃРёСЃС‚РµРјРµ: {NewTeacher.Role()}");
+            Console.WriteLine($"Р¤РРћ: {NewTeacher.Name}");
+            Console.WriteLine($"Р’РѕР·СЂР°СЃС‚ (Р»РµС‚): {NewTeacher.Age}");
+            Console.WriteLine($"РљРѕР»РёС‡РµСЃС‚РІРѕ РіСЂСѓРїРї СЃС‚СѓРґРµРЅС‚РѕРІ: " +
                 $"{NewTeacher.GroupsNumber}");
             NewTeacher.ChangeGroupsNumber(20);
-            Console.WriteLine($"Количество групп студентов в новом учебном " +
-                $"году: {NewTeacher.GroupsNumber}");
+            Console.WriteLine($"РљРѕР»РёС‡РµСЃС‚РІРѕ РіСЂСѓРїРї СЃС‚СѓРґРµРЅС‚РѕРІ РІ РЅРѕРІРѕРј СѓС‡РµР±РЅРѕРј " +
+                $"РіРѕРґСѓ: {NewTeacher.GroupsNumber}");
         }
     }
 }
