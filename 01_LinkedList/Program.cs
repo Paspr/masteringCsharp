@@ -8,7 +8,7 @@ namespace AlgorithmsDataStructures
 {
     class Program
     {
-            /*public void PrintList()   // вывод списка на экран, работает если поместить в LinkedList в test.cs
+            /*public void PrintList()   // РІС‹РІРѕРґ СЃРїРёСЃРєР° РЅР° СЌРєСЂР°РЅ, СЂР°Р±РѕС‚Р°РµС‚ РµСЃР»Рё РїРѕРјРµСЃС‚РёС‚СЊ РІ LinkedList РІ test.cs
             {
                 Node node = head;
                 while (node != null)
@@ -23,19 +23,19 @@ namespace AlgorithmsDataStructures
             LinkedList s_list = new LinkedList();
             Node n1 = new Node(12);
             s_list.AddInTail(n1);
-            s_list.Remove(12);                  // удаление одного элемента
+            s_list.Remove(12);                  // СѓРґР°Р»РµРЅРёРµ РѕРґРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
             s_list.AddInTail(new Node(55));
             s_list.AddInTail(new Node(108));
             s_list.AddInTail(new Node(55));
-            s_list.RemoveAll(55);               // удаление всех заданных элементов
-            s_list.Clear();                     // очистка списка
+            s_list.RemoveAll(55);               // СѓРґР°Р»РµРЅРёРµ РІСЃРµС… Р·Р°РґР°РЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ
+            s_list.Clear();                     // РѕС‡РёСЃС‚РєР° СЃРїРёСЃРєР°
 
-            Console.WriteLine($"Элементов: { s_list.Count()}"); // вычисление длины списка
+            Console.WriteLine($"Р­Р»РµРјРµРЅС‚РѕРІ: { s_list.Count()}"); // РІС‹С‡РёСЃР»РµРЅРёРµ РґР»РёРЅС‹ СЃРїРёСЃРєР°
 
             Node n2 = new Node(100);
             s_list.AddInTail(n2);
             Node n3 = new Node(200);
-            s_list.InsertAfter(n2, n3);             // вставка узла после заданного узла
+            s_list.InsertAfter(n2, n3);             // РІСЃС‚Р°РІРєР° СѓР·Р»Р° РїРѕСЃР»Рµ Р·Р°РґР°РЅРЅРѕРіРѕ СѓР·Р»Р°
         }
     }
 }
