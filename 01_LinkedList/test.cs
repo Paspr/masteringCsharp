@@ -64,8 +64,7 @@ namespace AlgorithmsDataStructures
             {
                 if (head.next == null)                              // если удаляется элемент из списка с одним элементом
                 {
-                    head = null;
-                    tail = null;       
+                    head = head.next; 
                     return true;                                    // если узел был удалён
                 }
                 else
