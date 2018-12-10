@@ -6,36 +6,88 @@ using System.Threading.Tasks;
 
 namespace AlgorithmsDataStructures
 {
+
     class Program
     {
-            /*public void PrintList()   // вывод списка на экран, работает если поместить в LinkedList в test.cs
+        static LinkedList ListSummer(LinkedList a, LinkedList b)    // функция сложения целых значений двух списков
+        {
+            LinkedList nodes = new LinkedList();
+            if (a.Count() != b.Count()) return nodes;              // если списки не равны — возврат пустого списка
+            else
             {
-                Node node = head;
-                while (node != null)
+                int sum = 0;
+                Node nodeA = a.head;
+                Node nodeB = b.head;
+                while (nodeA != null)
                 {
-                    Console.WriteLine(node.value);
-                    node = node.next;
+                    sum=sum+nodeA.value+ nodeB.value;              // получение суммы узлов из двух списков
+                    nodes.AddInTail(new Node(sum));                // запись суммы в конец пустого списка
+                    nodeA = nodeA.next;
+                    nodeB = nodeB.next;
+                    sum = 0;                                       // обнуление суммы перед новой итерацией цикла
                 }
-            }*/
+                return nodes;
+            }
+        }
+
+        static void Print (LinkedList a)                            // функция вывода списка на экран
+        {
+            Node node = a.head;
+            while (node != null)
+            {
+                Console.Write($"{node.value} ");
+                node = node.next;
+            }
+            Console.WriteLine();
+        }
 
         static void Main(string[] args)
-            {
-            LinkedList s_list = new LinkedList();
-            Node n1 = new Node(12);
-            s_list.AddInTail(n1);
-            s_list.Remove(12);                  // удаление одного элемента
-            s_list.AddInTail(new Node(55));
-            s_list.AddInTail(new Node(108));
-            s_list.AddInTail(new Node(55));
-            s_list.RemoveAll(55);               // удаление всех заданных элементов
-            s_list.Clear();                     // очистка списка
-
-            Console.WriteLine($"Элементов: { s_list.Count()}"); // вычисление длины списка
-
-            Node n2 = new Node(100);
-            s_list.AddInTail(n2);
-            Node n3 = new Node(200);
-            s_list.InsertAfter(n2, n3);             // вставка узла после заданного узла
+        {
+            // Тест сложения двух одинаковых списков
+            LinkedList one = new LinkedList();
+            one.AddInTail(new Node(55));
+            one.AddInTail(new Node(10));
+            one.AddInTail(new Node(10));
+            LinkedList two = new LinkedList();
+            two.AddInTail(new Node(55));
+            two.AddInTail(new Node(10));
+            two.AddInTail(new Node(20));
+            Print(ListSummer(one, two));
+            // Тест сложения двух неодинаковых списков
+            LinkedList three = new LinkedList();
+            Print(ListSummer(one, three));
+            // Тест удаления одного элемента
+            Console.WriteLine("Исходный список:");
+            Print(one);
+            one.Remove(55);
+            Console.WriteLine("Список после удаления:");
+            Print(one);
+            // Тест удаления всех заданных элементов
+            one.RemoveAll(10);
+            Console.WriteLine("Список после удаления:");
+            Print(one);
+            // Тест удаления из пустого списка и удаления несуществующего элемента
+            Console.WriteLine(one.Remove(10));
+            Console.WriteLine(two.Remove(107));
+            // Тест длины списка
+            Console.WriteLine($"Элементов: {one.Count()}");
+            Console.WriteLine($"Элементов: {two.Count()}");
+            // Тест вставки узла после заданного узла
+            one.InsertAfter(null, new Node(22));            // список пустой, первый узел равен null, вставка в начало списка
+            Print(one);
+            Node n2 = new Node(200);
+            one.InsertAfter(new Node(22), n2);
+            Print(one);
+            // Тест очистки списка
+            one.Clear();
+            Print(one);
+            Console.WriteLine($"Элементов: {one.Count()}");
+            // Тест поиска всех узлов по значению
+            two.AddInTail(new Node(15));
+            two.AddInTail(new Node(15));
+            two.AddInTail(new Node(15));
+            Console.WriteLine($"Количество одинаковых элементов:");
+            two.FindAll(15);
         }
     }
 }

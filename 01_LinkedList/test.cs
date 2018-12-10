@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
@@ -40,10 +40,19 @@ namespace AlgorithmsDataStructures
             return null;
         }
 
-        public List<Node> FindAll(int _value)
+        public List<Node> FindAll(int _value)                   // здесь будет ваш код поиска всех узлов по заданному значению
         {
             List<Node> nodes = new List<Node>();
-            // здесь будет ваш код поиска всех узлов по заданному значению
+            Node node = head;
+            while (node != null)
+            {
+                if (node.value == _value) nodes.Add(node);
+                node = node.next;
+            }
+            foreach (Node element in nodes)                   // печать элементов списка для проверки работы метода
+            {
+                Console.WriteLine(element);
+            }
             return nodes;
         }
 
@@ -97,10 +106,10 @@ namespace AlgorithmsDataStructures
 
         public void RemoveAll(int _value) // здесь будет ваш код удаления всех узлов по заданному значению
         {
-            for (int i=0; i< Count(); i++) { 
-            Remove(_value);
+            for (int i=0; i <= Count(); i++)
+            { 
+                Remove(_value);
             }
-           
         }
 
         public void Clear() // здесь будет ваш код очистки всего списка
@@ -112,15 +121,16 @@ namespace AlgorithmsDataStructures
         public int Count() // здесь будет ваш код подсчёта количества элементов в списке
         {
             if (head == null) return 0;
-            else { 
-            Node node = head;
-            int i = 0;
-            while (node != null)
-            {
-                i = i + 1;
-                node = node.next;
-            }
-            return i;
+            else
+            { 
+                Node node = head;
+                int i = 0;
+                while (node != null)
+                {
+                    i = i + 1;
+                    node = node.next;
+                }
+                return i;
             }
         }
 
