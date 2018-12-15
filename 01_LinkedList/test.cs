@@ -62,13 +62,6 @@ namespace AlgorithmsDataStructures
             if (head == null) return false;                         // если список пуст
             else
             {
-                if (head.next == null)                              // если удаляется элемент из списка с одним элементом
-                {
-                    head = head.next; 
-                    return true;                                    // если узел был удалён
-                }
-                else
-                {
                     Node CurrentNode = head;
                     Node PreviousNode = null;
                     while (CurrentNode != null)
@@ -77,7 +70,6 @@ namespace AlgorithmsDataStructures
                         {
                             if (head.value == CurrentNode.value)        // если элемент находится в начале списка
                             {
-                                tail = head;
                                 head = CurrentNode.next;
                                 return true; // если узел был удалён
                             }
@@ -85,7 +77,7 @@ namespace AlgorithmsDataStructures
                             {
                                 if (CurrentNode.next == null)           // если элемент находится последним в списке
                                 {
-                                    PreviousNode.next = null;
+                                    PreviousNode.next = CurrentNode.next;
                                     return true; // если узел был удалён
                                 }
                                 else                                    // элемент находится в середине списка
@@ -99,13 +91,13 @@ namespace AlgorithmsDataStructures
                         CurrentNode = CurrentNode.next;
                     }
                     return true; // если узел был удалён
-                }
             }
         }
 
         public void RemoveAll(int _value) // здесь будет ваш код удаления всех узлов по заданному значению
         {
-            for (int i=0; i <= Count(); i++)
+            int length = Count();
+            for (int i=0; i < length; i++)
             { 
                 Remove(_value);
             }
