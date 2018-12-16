@@ -66,12 +66,13 @@ namespace AlgorithmsDataStructures
             one.RemoveAll(10);
             Console.WriteLine("Список после удаления:");
             Print(one);
+            if (one.head == null && one.tail == null) Console.WriteLine("Список пуст");
             // Тест удаления из пустого списка и удаления несуществующего элемента
-            Console.WriteLine(one.Remove(10));
-            Console.WriteLine(two.Remove(107));
+            if (one.Remove(10) == false) Console.WriteLine("Невозможно удалить из пустого списка");
+            if (two.Remove(107) == false) Console.WriteLine("Невозможно удалить несуществующий элемент");
             // Тест длины списка
-            Console.WriteLine($"Элементов: {one.Count()}");
-            Console.WriteLine($"Элементов: {two.Count()}");
+            Console.WriteLine($"Длина списка: {one.Count()}");
+            Console.WriteLine($"Длина списка: {two.Count()}");
             // Тест вставки узла после заданного узла
             one.InsertAfter(null, new Node(22));            // список пустой, первый узел равен null, вставка в начало списка
             Print(one);
@@ -81,7 +82,8 @@ namespace AlgorithmsDataStructures
             // Тест очистки списка
             one.Clear();
             Print(one);
-            Console.WriteLine($"Элементов: {one.Count()}");
+            if (one.head == null && one.tail == null) Console.WriteLine("Список пуст");
+            Console.WriteLine($"Длина списка: {one.Count()}");
             // Тест поиска всех узлов по значению
             two.AddInTail(new Node(15));
             two.AddInTail(new Node(15));
