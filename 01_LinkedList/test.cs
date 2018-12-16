@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
@@ -87,7 +87,7 @@ namespace AlgorithmsDataStructures
                             if (CurrentNode.next == null)           // если элемент находится последним в списке
                             {
                                 PreviousNode.next = null;
-                                //tail = null;
+                                tail = PreviousNode;
                                 return true; // если узел был удалён
                             }
                             else                                    // элемент находится в середине списка

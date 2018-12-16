@@ -90,6 +90,7 @@ namespace AlgorithmsDataStructures
             two.AddInTail(new Node(15));
             Console.WriteLine($"Количество одинаковых элементов:");
             two.FindAll(15);
+
         }
     }
 }
