@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
@@ -68,24 +68,34 @@ namespace AlgorithmsDataStructures
                     {
                         if (CurrentNode.value == _value)
                         {
-                            if (head.value == CurrentNode.value)        // если элемент находится в начале списка
+
+                        if (head.next == null)                              // если удаляется элемент из списка с одним элементом
+                        {
+                            head = null;
+                            tail = null;
+                            return true;                                    // если узел был удалён
+                        }
+
+                        if (head.value == CurrentNode.value)        // если элемент находится в начале списка
                             {
-                                head = CurrentNode.next;
+                            //tail = head;
+                            head = head.next;
                                 return true; // если узел был удалён
                             }
                             else
                             {
-                                if (CurrentNode.next == null)           // если элемент находится последним в списке
-                                {
-                                    PreviousNode.next = CurrentNode.next;
-                                    return true; // если узел был удалён
-                                }
-                                else                                    // элемент находится в середине списка
-                                {
-                                    PreviousNode.next = CurrentNode.next; 
-                                    return true; // если узел был удалён
-                                }
+                            if (CurrentNode.next == null)           // если элемент находится последним в списке
+                            {
+                                PreviousNode.next = null;
+                                //tail = null;
+                                return true; // если узел был удалён
                             }
+                            else                                    // элемент находится в середине списка
+                            {
+                                PreviousNode.next = CurrentNode.next;
+                                return true; // если узел был удалён
+                            }
+                        }
                         }
                         PreviousNode = CurrentNode;
                         CurrentNode = CurrentNode.next;
