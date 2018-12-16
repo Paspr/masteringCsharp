@@ -142,14 +142,16 @@ namespace AlgorithmsDataStructures
             {                                           // добавьте новый элемент первым в списке 
                 _nodeToInsert.next = head;
                 head = _nodeToInsert;
+                tail = head;
             }
             while (CurrentNode != null)
             {
                 if (CurrentNode.value == _nodeAfter.value)
                 {
-                    _nodeAfter.next = CurrentNode.next;
-                    _nodeToInsert.next = _nodeAfter.next;
-                    CurrentNode.next = _nodeToInsert;
+                   _nodeAfter.next = CurrentNode.next;
+                   _nodeToInsert.next = _nodeAfter.next;
+                   CurrentNode.next = _nodeToInsert;
+                   if (tail.next!=null) tail = CurrentNode.next;
                 }
                 CurrentNode = CurrentNode.next;
             }
