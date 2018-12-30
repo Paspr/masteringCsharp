@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace AlgorithmsDataStructures
@@ -16,14 +16,14 @@ namespace AlgorithmsDataStructures
             MakeArray(16);
         }
 
-        public void MakeArray(int new_capacity)                 // ваш код
+        public void MakeArray(int new_capacity)         // create new array
         {
-            if (count==0)
+            if (count==0)                               // no elements case
             {
                 array = new T[new_capacity];
                 capacity = new_capacity;
             }
-            else
+            else                                        // copy existing elements
             {
                 T[] temp= new T[new_capacity];
                 Array.Copy(array, 0, temp, 0, count);
@@ -32,19 +32,18 @@ namespace AlgorithmsDataStructures
             } 
         }
 
-        public T GetItem(int index)                             // ваш код
+        public T GetItem(int index)                     // get item by index
         {
-            if ((index >= count) || (index<0))  throw new IndexOutOfRangeException("Индекс вне допустимых границ");
+            if ((index >= count) || (index<0))  throw new IndexOutOfRangeException("Index is out of range");
             else 
             {
                 return array[index];
             }
-            //return default(T);
         }
 
-        public void Append(T itm)                               // ваш код
+        public void Append(T itm)                      // add item in tail
         {
-            if (count+1 > capacity)
+            if (count+1 > capacity)                    // max capacity is exceeded, array is extended
             { 
                 MakeArray(capacity * 2);
                 array[count] = itm;
@@ -57,20 +56,20 @@ namespace AlgorithmsDataStructures
             }
         }
 
-        public void Insert(T itm, int index)
+        public void Insert(T itm, int index)          // insert element at the specified index
         {
             if (index == count)
             {
                 Append(itm);
                 return;
             }
-            if ((index > count) || (index < 0)) throw new IndexOutOfRangeException("Индекс вне допустимых границ");
+            if ((index > count) || (index < 0)) throw new IndexOutOfRangeException("Index is out of range");
             else
             {
                 if (count + 1 > capacity)
                 {
                     MakeArray(capacity * 2);
-                    Array.Copy(array, index, array, index + 1, count - index);
+                    Array.Copy(array, index, array, index + 1, count - index);  // shift existing elements
                     array[index] = itm;
                     count++;
                 }
@@ -83,9 +82,9 @@ namespace AlgorithmsDataStructures
             }
         }
 
-        public void Remove(int index)                                // ваш код
+        public void Remove(int index)               // remove element at the specified index
         {
-            if ((index >= count) || (index < 0)) throw new IndexOutOfRangeException("Индекс вне допустимых границ");
+            if ((index >= count) || (index < 0)) throw new IndexOutOfRangeException("Index is out of range");
             for (int j = index; j < capacity - 1; j++)
             {
                 
@@ -94,11 +93,11 @@ namespace AlgorithmsDataStructures
             count--;
             if (count < (capacity / 2))
             {
-                if (count < 16)
+                if (count < 16)                    // preserve minimal array size
                 {
                     MakeArray(16);
                 }
-                else
+                else                               // shrink array
                 {
                     MakeArray((int)(capacity / 1.5));
                 }
