@@ -66,9 +66,24 @@ namespace AlgorithmsDataStructures
                 Console.WriteLine("FAIL");
             }
             Console.WriteLine("Insert at invalid position");
-            Arr.Insert(200, 100);
+            try
+            {
+                Arr.Insert(200, 100);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             Console.WriteLine("Remove at invalid position");
-            Arr.Remove(31);
+            try
+            {
+                Arr.Remove(31);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            Console.WriteLine("Remove at invalid position");
         }
     }
 }
