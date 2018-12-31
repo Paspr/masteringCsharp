@@ -83,7 +83,6 @@ namespace AlgorithmsDataStructures
             {
                 Console.WriteLine(e);
             }
-            Console.WriteLine("Remove at invalid position");
         }
     }
 }
