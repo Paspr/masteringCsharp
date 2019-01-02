@@ -49,7 +49,7 @@ namespace AlgorithmsDataStructures
             // ваш код
             if (list.Count != 0)
             {
-                return list.Last.Value; // было list.First.Value, ошибка Некорректная операция push() или peek() для непустого стека
+                return list.First.Value; // было list.First.Value, ошибка Некорректная операция push() или peek() для непустого стека
             }
             else
             {
