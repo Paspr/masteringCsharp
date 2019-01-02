@@ -1,3 +1,3 @@
-# Test repository
+# Data structures
 
-This is a test repo for the first task on GitHub.
+This is a repo for my works on data structures.
