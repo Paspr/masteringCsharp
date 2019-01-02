@@ -41,7 +41,7 @@ namespace AlgorithmsDataStructures
         public void Push(T val)
         {
             // ваш код
-            list.AddLast(val);
+            list.AddFirst(val); // было AddLast, ошибка Некорректная операция push() или peek() для непустого стека
         }
 
         public T Peek()
@@ -49,7 +49,7 @@ namespace AlgorithmsDataStructures
             // ваш код
             if (list.Count != 0)
             {
-                return list.First.Value;
+                return list.Last.Value; // было list.First.Value, ошибка Некорректная операция push() или peek() для непустого стека
             }
             else
             {
