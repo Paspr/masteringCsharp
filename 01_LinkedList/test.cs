@@ -40,7 +40,7 @@ namespace AlgorithmsDataStructures
             return null;
         }
 
-        public List<Node> FindAll(int _value)                   // здесь будет ваш код поиска всех узлов по заданному значению
+        public List<Node> FindAll(int _value)                   
         {
             List<Node> nodes = new List<Node>();
             Node node = head;
@@ -73,14 +73,14 @@ namespace AlgorithmsDataStructures
                         {
                             head = null;
                             tail = null;
-                            return true;                                    // если узел был удалён
+                            return true;                                    // если узел был удален
                         }
 
                         if (head.value == CurrentNode.value)        // если элемент находится в начале списка
                             {
-                            //tail = head;
+                            
                             head = head.next;
-                                return true; // если узел был удалён
+                                return true; // если узел был удален
                             }
                             else
                             {
@@ -88,23 +88,23 @@ namespace AlgorithmsDataStructures
                             {
                                 PreviousNode.next = null;
                                 tail = PreviousNode;
-                                return true; // если узел был удалён
+                                return true; // если узел был удален
                             }
                             else                                    // элемент находится в середине списка
                             {
                                 PreviousNode.next = CurrentNode.next;
-                                return true; // если узел был удалён
+                                return true; // если узел был удален
                             }
                         }
                         }
                         PreviousNode = CurrentNode;
                         CurrentNode = CurrentNode.next;
                     }
-                    return true; // если узел был удалён
+                    return true; // если узел был удален
             }
         }
 
-        public void RemoveAll(int _value) // здесь будет ваш код удаления всех узлов по заданному значению
+        public void RemoveAll(int _value) // удаления всех узлов по заданному значению
         {
             int length = Count();
             for (int i=0; i < length; i++)
@@ -113,13 +113,13 @@ namespace AlgorithmsDataStructures
             }
         }
 
-        public void Clear() // здесь будет ваш код очистки всего списка
+        public void Clear() // очистка всего списка
         {
             head = null;
             tail = null;
         }
 
-        public int Count() // здесь будет ваш код подсчёта количества элементов в списке
+        public int Count() // подсчет количества элементов в списке
         {
             if (head == null) return 0;
             else
@@ -135,11 +135,11 @@ namespace AlgorithmsDataStructures
             }
         }
 
-        public void InsertAfter(Node _nodeAfter, Node _nodeToInsert) // здесь будет ваш код вставки узла после заданного
+        public void InsertAfter(Node _nodeAfter, Node _nodeToInsert) // вставка узла после заданного
         {
             Node CurrentNode = head;
             if ((_nodeAfter==null) & (head==null))      // если _nodeAfter = null и список пустой, 
-            {                                           // добавьте новый элемент первым в списке 
+            {                                           // добавить новый элемент первым в списке 
                 _nodeToInsert.next = head;
                 head = _nodeToInsert;
                 tail = head;

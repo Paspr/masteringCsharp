@@ -7,10 +7,7 @@ namespace AlgorithmsDataStructures
     class Deque<T>
     {
         readonly List<T> list = new List<T>();
-        public Deque()
-        {
-            // инициализация внутреннего хранилища
-        }
+
 
         public void AddFront(T item)
         {

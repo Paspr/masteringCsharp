@@ -7,10 +7,7 @@ namespace AlgorithmsDataStructures
     public class Stack<T>
     {
         readonly LinkedList<T> list = new LinkedList<T>();
-        public Stack()
-        {
-            // инициализация внутреннего хранилища стека
-        }
+
 
         public int Size()
         {
@@ -24,7 +21,7 @@ namespace AlgorithmsDataStructures
 
         public T Pop()
         {
-            // ваш код
+            
             if (list.Count != 0)
             {
                 T firstElement = list.First.Value;
@@ -40,16 +37,16 @@ namespace AlgorithmsDataStructures
 
         public void Push(T val)
         {
-            // ваш код
-            list.AddFirst(val); // было AddLast, ошибка Некорректная операция push() или peek() для непустого стека
+            
+            list.AddFirst(val); // было AddLast
         }
 
         public T Peek()
         {
-            // ваш код
+            
             if (list.Count != 0)
             {
-                return list.First.Value; // было list.First.Value, ошибка Некорректная операция push() или peek() для непустого стека
+                return list.First.Value; 
             }
             else
             {

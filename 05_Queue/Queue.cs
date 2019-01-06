@@ -7,10 +7,6 @@ namespace AlgorithmsDataStructures
     public class Queue<T>
     {
         readonly LinkedList<T> list = new LinkedList<T>();
-        public Queue()
-        {
-            // инициализация внутреннего хранилища очереди
-        }
 
         public void Enqueue(T item)
         {

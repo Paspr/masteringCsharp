@@ -52,7 +52,7 @@ namespace AlgorithmsDataStructures
                 }
             }
         }
-        // Circluar shift by N elements
+        // Circular shift by N elements
         static void TurnQueue(Queue<Object> queue, int item)
         {
             for (int i=0; i < item; i++)
