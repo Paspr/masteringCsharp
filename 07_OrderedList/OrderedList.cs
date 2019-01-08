@@ -66,41 +66,74 @@ namespace AlgorithmsDataStructures
         {
             // insert value 
             // at corresponding position
-            Node<T> CurrentNode = head;
             Node<T> temp = new Node<T>(value);
             if (head == null)
             {
-                InsertInHead(temp);
-                return;
-            }
-
-
-            if (_ascending)
-            {
-                if (Compare(head.value, temp.value) == 1 || Compare(head.value, temp.value) == 0)
-                {
-                    InsertInHead(temp);
-                    return;
-                }
-                while (CurrentNode.next != null && (Compare(CurrentNode.next.value, temp.value) == -1))
-                {
-                    CurrentNode = CurrentNode.next;
-                }
-                InsertAfter(CurrentNode, temp);    
+                temp.next = head;
+                head = temp;
+                tail = head;
             }
             else
             {
-                if (Compare(head.value, temp.value) == -1 || Compare(head.value, temp.value) == 0)
-                {
-                    InsertInHead(temp);
-                    return;
-                }
-
-                while (CurrentNode.next != null && (Compare(CurrentNode.next.value, temp.value) == 1))
+                if (_ascending) { 
+                Node<T> CurrentNode = head;
+                while (CurrentNode != null && (Compare(CurrentNode.value, temp.value) == -1))
                 {
                     CurrentNode = CurrentNode.next;
                 }
-                InsertAfter(CurrentNode, temp);
+                if (CurrentNode == head)
+                {
+                    CurrentNode.prev = temp;
+                    CurrentNode.prev.next = head;
+                    head = CurrentNode.prev;
+                }
+                else
+                {
+                    if (CurrentNode != null)
+                    {
+                        CurrentNode.prev.next = temp;
+                        CurrentNode.prev.next.next = CurrentNode;
+                        CurrentNode.prev.next.prev = CurrentNode.prev;
+                        CurrentNode.prev = CurrentNode.prev.next;
+                    }
+                    else
+                    {
+                        tail.next = temp;
+                        tail.next.prev = tail;
+                        tail = tail.next;
+                    }
+                }
+            }
+                else
+                {
+                    Node<T> CurrentNode = head;
+                    while (CurrentNode != null && (Compare(CurrentNode.value, temp.value) == 1))
+                    {
+                        CurrentNode = CurrentNode.next;
+                    }
+                    if (CurrentNode == head)
+                    {
+                        CurrentNode.prev = temp;
+                        CurrentNode.prev.next = head;
+                        head = CurrentNode.prev;
+                    }
+                    else
+                    {
+                        if (CurrentNode != null)
+                        {
+                            CurrentNode.prev.next = temp;
+                            CurrentNode.prev.next.next = CurrentNode;
+                            CurrentNode.prev.next.prev = CurrentNode.prev;
+                            CurrentNode.prev = CurrentNode.prev.next;
+                        }
+                        else
+                        {
+                            tail.next = temp;
+                            tail.next.prev = tail;
+                            tail = tail.next;
+                        }
+                    }
+                }
             }
         }
 
