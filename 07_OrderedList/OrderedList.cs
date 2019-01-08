@@ -250,66 +250,6 @@ namespace AlgorithmsDataStructures
             return r;
         }
 
-        public void AddInTail(Node<T> _item)
-        {
-            if (head == null)
-            {
-                head = _item;
-                head.next = null;
-                head.prev = null;
-            }
-            else
-            {
-                tail.next = _item;
-                _item.prev = tail;
-            }
-            tail = _item;
-        }
-
-        public void InsertInHead(Node<T> _nodeToInsert)                     // insert at head
-        {
-            Node<T> CurrentNode = head;
-            if (head == null)
-            {
-                _nodeToInsert.next = head;
-                head = _nodeToInsert;
-                tail = head;
-            }
-            else
-            {
-                head = _nodeToInsert;
-                CurrentNode.prev = head;
-                head.next = CurrentNode;
-            }
-        }
-
-        public void InsertAfter(Node<T> _nodeAfter, Node<T> _nodeToInsert)
-        {
-            Node<T> CurrentNode = head;
-            if ((_nodeAfter == null) & (head == null)) InsertInHead(_nodeToInsert);      
-                                                                                        
-            else
-            {
-                if ((_nodeAfter == null) & (head != null)) AddInTail(_nodeToInsert);         
-                else                                                                         
-                {
-                    while (CurrentNode != null)
-                    {
-                        if (Compare(CurrentNode.value, _nodeAfter.value) == 0)
-                        {
-                            _nodeAfter.next = CurrentNode.next;
-                            _nodeToInsert.next = _nodeAfter.next;
-                            _nodeToInsert.prev = CurrentNode;
-                            CurrentNode.next = _nodeToInsert;
-                            if (tail.next != null) tail = CurrentNode.next;
-                            if (_nodeAfter.next == null) _nodeAfter.next.next.prev = _nodeToInsert;
-                            if (_nodeToInsert.next != null) _nodeToInsert.next.prev = _nodeToInsert;
-                        }
-                        CurrentNode = CurrentNode.next;
-                    }
-                }
-            }
-        }
     }
 
 }
