@@ -11,9 +11,6 @@ namespace AlgorithmsDataStructures
 
         static void Main(string[] args)
         {
-
-
-
             HashTable test = new HashTable(17, 3);
             test.HashFun("1234");
             test.HashFun("1243");

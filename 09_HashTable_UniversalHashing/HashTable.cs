@@ -8,6 +8,7 @@ namespace AlgorithmsDataStructures
     {
         public int size;
         public int step;
+        public int chooseFunction;
         public string[] slots;
 
         public HashTable(int sz, int stp)
@@ -17,51 +18,52 @@ namespace AlgorithmsDataStructures
             slots = new string[size];
             for (int i = 0; i < size; i++) slots[i] = null;
             Random rand = new Random();
-            int chooseFunction;
-            chooseFunction = rand.Next(0,3); 
+            chooseFunction = rand.Next(0,3);
+        }
+
+        public int HashFun(string value)
+        {
             switch (chooseFunction)
             {
                 case 0:
-                    Func<string, int> func1 = (x) =>
                     {
+                        // function 1
                         int h = 0, i = 0;
                         int a = 31415, b = 27183;
-                        for (int j = 0; j < x.Length; j++)
+                        for (int j = 0; j < value.Length; j++)
                         {
-                            h = (a * h + x[i]) % size;
+                            h = (a * h + value[i]) % size;
                             a = a * b % (size - 1);
                         }
                         return h;
-                    };
-                    break;
+                    }
                 case 1:
-                    Func<string, int> func2 = (x) =>
                     {
-                        var r = new Random();                       // генерация случайного числа UInt64
-                        ulong[] nums = new ulong[x.Length];
-                        for (int i = 0; i < x.Length; i++)
+                        // function 2
+                        var r = new Random();                           // generate random UInt64
+                        ulong[] nums = new ulong[value.Length];
+                        for (int i = 0; i < value.Length; i++)
                         {
                             var b = new byte[sizeof(ulong)];
                             r.NextBytes(b);
                             var res = BitConverter.ToUInt64(b, 0);
                             nums[i] = res;
                         }
-                        ulong sum = 0;                             // вычисление хэша
-                        for (int j = 0; j < x.Length; j++)
+                        ulong sum = 0;                                  // calculate hash
+                        for (int j = 0; j < value.Length; j++)
                         {
-                            sum = sum + nums[j] * x[j];
+                            sum = sum + nums[j] * value[j];
                         }
                         ulong c = sum >> 32;
-                        ulong k = c - (c / Convert.ToUInt64(size)) * Convert.ToUInt64(size); // замена оператора %
+                        ulong k = c - (c / Convert.ToUInt64(size)) * Convert.ToUInt64(size); // % replacement for ulong
                         return (Convert.ToInt32(k));
-                    };
-                    break;
+                    }
                 case 2:
-                    Func<string, int> func3 = (x) =>
                     {
+                        // function 3
                         var r = new Random();
-                        ulong[] nums = new ulong[x.Length];
-                        for (int i = 0; i < x.Length; i++)
+                        ulong[] nums = new ulong[value.Length];
+                        for (int i = 0; i < value.Length; i++)
                         {
                             var b = new byte[sizeof(ulong)];
                             r.NextBytes(b);
@@ -69,81 +71,24 @@ namespace AlgorithmsDataStructures
                             nums[i] = res;
                         }
                         ulong sum = 0;
-                        for (int j = 0; j < x.Length; j += 2)
+                        for (int j = 0; j < value.Length; j += 2)
                         {
-                            sum = sum + (nums[j] + x[j]) * (nums[j + 1] + x[j + 1]);
+                            sum = sum + (nums[j] + value[j]) * (nums[j + 1] + value[j + 1]);
                         }
                         ulong c = sum >> 32;
-                        ulong k = c - (c / Convert.ToUInt64(size)) * Convert.ToUInt64(size); // замена оператора %
+                        ulong k = c - (c / Convert.ToUInt64(size)) * Convert.ToUInt64(size);
                         return (Convert.ToInt32(k));
-                    };
-                    break;
+                    }
                 default:
-                    break;
+                    {
+                        int s = 0;
+                        foreach (char c in value)
+                        {
+                            s += c;
+                        }
+                        return s % size;
+                    };
             }
-        }
-
-        public int HashFun(string value)
-        {
-            // function 1
-            /*
-            int h = 0, i = 0;
-            int a = 31415, b = 27183;
-            for (int j=0; j<value.Length; j++) { 
-                h = (a * h + value[i]) % size;
-                a = a * b % (size - 1);
-            }
-            return h;
-            */
-
-            // function 2
-            /*
-            var r = new Random();
-            ulong[] nums = new ulong[value.Length];
-            for (int i=0; i<value.Length; i++) { 
-            var b = new byte[sizeof(ulong)];
-            r.NextBytes(b);
-            var res = BitConverter.ToUInt64(b, 0);
-                nums[i] = res;
-            } 
-            ulong sum = 0;
-            for (int j = 0; j < value.Length; j++)
-            {
-                sum = sum + nums[j] * value[j];
-            }
-            ulong c = sum >> 32;
-            ulong k = c - (c / Convert.ToUInt64(size)) * Convert.ToUInt64(size); // замена оператора %
-            return (Convert.ToInt32(k)); 
-            */
-
-            // function 3
-            var r = new Random();
-            ulong[] nums = new ulong[value.Length];
-            for (int i = 0; i < value.Length; i++)
-            {
-                var b = new byte[sizeof(ulong)];
-                r.NextBytes(b);
-                var res = BitConverter.ToUInt64(b, 0);
-                nums[i] = res;
-            }
-            ulong sum = 0;
-            for (int j = 0; j < value.Length; j+=2)
-            {
-                sum = sum + (nums[j] + value[j]) * (nums[j + 1]  + value[j + 1]);
-            }
-            ulong c = sum >> 32;
-            ulong k = c - (c / Convert.ToUInt64(size)) * Convert.ToUInt64(size); // замена оператора %
-            return (Convert.ToInt32(k));
-
-            /*
-            // calclate hash and return slot
-            int s = 0;
-            foreach (char c in value)
-            {
-                s+=c;
-            }
-            return s%size;
-            */
         }
 
         /*
