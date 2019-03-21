@@ -76,6 +76,10 @@ namespace AlgorithmsDataStructures2
                     }
                 }
             }
+            else
+            {
+                nodes.Add(Root);
+            }
             return nodes;
         }
 
@@ -99,6 +103,13 @@ namespace AlgorithmsDataStructures2
                         for (int i = 0; i< tempNode.Children.Count; i++)
                         numbers.Enqueue(tempNode.Children[i]);
                     }
+                }
+            }
+            else
+            {
+                if (Equals(Root.NodeValue, val))
+                {
+                    nodes.Add(Root);
                 }
             }
             return nodes;
