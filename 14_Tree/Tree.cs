@@ -50,6 +50,7 @@ namespace AlgorithmsDataStructures2
         {
             // ваш код удаления существующего узла NodeToDelete
             NodeToDelete.Parent.Children.Remove(NodeToDelete);
+            //if (NodeToDelete.Parent.Children.Count == 0) NodeToDelete.Parent.Children[0] == null;
             NodeToDelete.Parent = null;
             
         }
@@ -147,6 +148,10 @@ namespace AlgorithmsDataStructures2
                     }
                 }
             }
+            else
+            {
+                if (Root != null) nodesNubmer++;
+            }
             return nodesNubmer;
         }
 
@@ -170,6 +175,10 @@ namespace AlgorithmsDataStructures2
                             numbers.Enqueue(tempNode.Children[i]);
                     }
                 }
+            }
+            else
+            {
+                if (Root != null) leavesNubmer++;
             }
             return leavesNubmer;
         }
