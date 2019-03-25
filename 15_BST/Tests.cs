@@ -133,6 +133,20 @@ namespace AlgorithmsDataStructures2
             {
                 Console.WriteLine("FAIL");
             }
+            // count test
+            Console.WriteLine();
+            Console.WriteLine("Count method test");
+            Console.WriteLine("Counting all nodes");
+            if (BinTree.Count() == 15)
+            {
+                Console.WriteLine("OK");
+
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+
             // delete node test
             Console.WriteLine();
             Console.WriteLine("DeleteNodeByKey method test");
@@ -154,9 +168,9 @@ namespace AlgorithmsDataStructures2
             {
                 Console.WriteLine("FAIL");
             }
-
             BinTree.DeleteNodeByKey(12); 
             BinTree.DeleteNodeByKey(13);
+
             Console.ReadKey();
         }
     }

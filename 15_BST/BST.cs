@@ -247,5 +247,35 @@ namespace AlgorithmsDataStructures2
             }
         }
 
+        public int Count()
+        {
+            int nodesNumber = 0;
+            Queue<BSTNode<T>> nodes = new Queue<BSTNode<T>>();
+            if (Root != null)
+            {
+                nodes.Enqueue(Root);
+                while (nodes.Count != 0)
+                {
+                    BSTNode<T> tempNode = nodes.Dequeue();
+                    nodesNumber++;
+                    if (tempNode.LeftChild!=null)
+                    {
+                        nodes.Enqueue(tempNode.LeftChild);
+                    }
+                    if (tempNode.RightChild!=null)
+                    {
+                        nodes.Enqueue(tempNode.RightChild);
+                    }
+                }
+                return nodesNumber;
+            }
+            else
+            {
+                return nodesNumber; // количество узлов в дереве
+            }
+                    
+                    
+        }
+
     }
 }
