@@ -27,7 +27,7 @@ namespace AlgorithmsDataStructures2
                 while (i < level)
                 {
                     if (Tree[current] == key) return 0;
-                    else if (Tree[current] < key)
+                    else if (Tree[current] < key || Tree[current] == null)
                     {
                         if (Tree[2 * current + 2] == null) return -(2 * current + 2);
                         else
@@ -40,7 +40,7 @@ namespace AlgorithmsDataStructures2
                             }
                         }
                     }
-                    else if (Tree[current] > key)
+                    else if (Tree[current] > key || Tree[current] == null)
                     {
                         if (Tree[2 * current + 1] == null) return -(2 * current + 1);
                         else
