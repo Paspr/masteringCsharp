@@ -17,17 +17,17 @@ namespace AlgorithmsDataStructures2
 
         public int? FindKeyIndex(int key)
         {
-            
-            int level = (int)Math.Log(Tree.Length + 1, 2);
+
+            int level = (int)Math.Log(Tree.Length + 1, 2); // уровень дерева для обхода в цикле
             // ищем в массиве индекс ключа
             if (Tree[0]!=null)
             {
                 int current = 0;
                 int i = 0;
-                while (i < level)
+                while (i < level) // обход начинается с корня
                 {
                     if (Tree[current] == key) return 0;
-                    else if (Tree[current] < key || Tree[current] == null)
+                    else if (Tree[current] < key || Tree[current] == null)      // переход к правому потомку
                     {
                         if (Tree[2 * current + 2] == null) return -(2 * current + 2);
                         else
@@ -35,12 +35,12 @@ namespace AlgorithmsDataStructures2
                             if (Tree[2 * current + 2] == key) return 2 * current + 2;
                             else
                             {
-                                current = 2 * i + 2;
-                                i++;
+                                current = 2 * i + 2; // переход к следующему правому потомку
+                                i++;                 // переход на уровень дерева ниже
                             }
                         }
                     }
-                    else if (Tree[current] > key || Tree[current] == null)
+                    else if (Tree[current] > key || Tree[current] == null)      // переход к левому потомку
                     {
                         if (Tree[2 * current + 1] == null) return -(2 * current + 1);
                         else
@@ -48,8 +48,8 @@ namespace AlgorithmsDataStructures2
                             if (Tree[2 * current + 1] == key) return 2 * current + 1;
                             else
                             {
-                                current = 2 * current + 1;
-                                i++;
+                                current = 2 * current + 1; // переход к следующему левому потомку
+                                i++;                       // переход на уровень дерева ниже
                             }
                         }
                     }
@@ -57,31 +57,31 @@ namespace AlgorithmsDataStructures2
             }
             else
             {
-                return null;
+                return null; // не найден
             }
-            return null;
-            // не найден
+            return null; // не найден
         }
 
         public int AddKey(int key)
         {
+            int? keySearchResult = FindKeyIndex(key); // результат поиска ключа
             // добавляем ключ в массив
             if (Tree[0] == null)
             {
                 Tree[0] = key;
-                return 0;
+                return 0; // индекс добавленного ключа
             }
-            if (FindKeyIndex(key)==null || FindKeyIndex(key) > 0 || (FindKeyIndex(key)==0 && Tree[0]!=null))
+            
+            else if (keySearchResult == null || keySearchResult > 0 || (keySearchResult == 0 && Tree[0]!=null))
             {
-                return -1; // индекс добавленного/существующего ключа или -1 если не удалось
+                return -1; // добавление не удалось
             }
             else
             {
-                int index = (int)FindKeyIndex(key) * (-1);
+                int index = (int)keySearchResult * (-1);
                 Tree[index] = key;
-                return index;
+                return index;   // индекс добавленного ключа
             } 
         }
-
     }
 }

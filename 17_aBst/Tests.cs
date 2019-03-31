@@ -10,7 +10,7 @@ namespace AlgorithmsDataStructures2
     {
         static void Main(string[] args)
         {
-            aBST notFullTree = new aBST(4);
+            aBST notFullTree = new aBST(3);
             notFullTree.AddKey(50);
             notFullTree.AddKey(25);
             notFullTree.AddKey(75);
@@ -71,7 +71,7 @@ namespace AlgorithmsDataStructures2
                 Console.WriteLine("FAIL");
             }
             Console.WriteLine("Full tree tests");
-            aBST fullTree = new aBST(4);
+            aBST fullTree = new aBST(3);
             fullTree.AddKey(8);
             fullTree.AddKey(4);
             fullTree.AddKey(12);
