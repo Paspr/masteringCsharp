@@ -7,42 +7,50 @@ namespace AlgorithmsDataStructures2
     {
         public static int[] GenerateBBSTArray(int[] a)
         {
+
             Array.Sort(a);
-
+            
             int[] BSTarray = new int[a.Length];
-            int index = 0;
 
-            void BST (int[] array, int minInput, int maxInput, int level, int treshold = 0)
+            for (int i = 0; i < (int)Math.Log(a.Length, 2) + 1; i++)
             {
+                BalancedBST.BST.BSTGenerate(a, BSTarray, 0, a.Length, i);
+            }
+            return BSTarray;
+        }
+            
+
+        public class BST
+        {
+            public static int index=0;
+            public static void BSTGenerate(int[] source, int[] array, int minInput, int maxInput, int level, int treshold = 0)
+            {
+               
                 if (minInput > maxInput)
                 {
                     return;
                 }
-                int middle = minInput+((maxInput - minInput) / 2);
-                
+                int middle = minInput + ((maxInput - minInput) / 2);
+
                 if (treshold == level)
                 {
-                    if (index>= array.Length || middle >= array.Length)
+                    if (BalancedBST.BST.index >= array.Length || middle >= array.Length)
                     {
                         return;
                     }
                     else
                     {
-                        array[index] = a[middle];
-                        index++;
+                        array[BalancedBST.BST.index] = source[middle];
+                        BalancedBST.BST.index++;
                         return;
-                    }  
+                    }
                 }
-           
-                BST(array, minInput, middle, level, treshold + 1);
-                BST(array, middle+1, maxInput, level, treshold + 1);
+                BSTGenerate(source, array, minInput, middle, level, treshold + 1);
+                BSTGenerate(source, array, middle + 1, maxInput, level, treshold + 1);
             }
-            for (int i=0; i < (int)Math.Log(a.Length, 2) + 1; i++)
-            {
-                BST(BSTarray, 0, a.Length, i);
-            }
-            return BSTarray;
         }
-
-    }
+    }         
 }
+
+    
+
