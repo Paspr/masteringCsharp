@@ -24,7 +24,7 @@ namespace AlgorithmsDataStructures2
             {
                 Console.WriteLine("FAIL");
             }
-            
+            BalancedBST.BST.index = 0;
             int[] test2 = BalancedBST.GenerateBBSTArray(incompleteTree);
             Console.WriteLine("Test for incomplete binary tree");
             if (test2[0] == 12 && test2[1] == 9 && test2[2] == 62 && test2[3] == 7 && test2[4] == 11 && test2[5] == 37 &&
