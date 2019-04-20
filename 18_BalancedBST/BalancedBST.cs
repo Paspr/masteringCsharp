@@ -9,29 +9,40 @@ namespace AlgorithmsDataStructures2
         {
             Array.Sort(a);
 
-            int min = 0;
-            int max = a.Length - 1;
             int[] BSTarray = new int[a.Length];
-            BuildArray(a, min, max);
+            int index = 0;
 
-            int BuildArray (int[] num, int minInput, int maxInput)
+            void BST (int[] array, int minInput, int maxInput, int level, int treshold = 0)
             {
-                int middle = (minInput + maxInput) / 2;
-                num[0] = a[middle];
                 if (minInput > maxInput)
                 {
-                    return 0;
+                    return;
                 }
-                else
+                int middle = minInput+((maxInput - minInput) / 2);
+                
+                if (treshold == level)
                 {
-                    return (BuildArray(num, minInput, middle - 1));
-                    BuildArray(num, middle + 1, maxInput);
+                    if (index>= array.Length || middle >= array.Length)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        array[index] = a[middle];
+                        index++;
+                        return;
+                    }  
                 }
-                //return 0;
+           
+                BST(array, minInput, middle, level, treshold + 1);
+                BST(array, middle+1, maxInput, level, treshold + 1);
             }
-
-
+            for (int i=0; i < (int)Math.Log(a.Length, 2) + 1; i++)
+            {
+                BST(BSTarray, 0, a.Length, i);
+            }
             return BSTarray;
         }
+
     }
 }
