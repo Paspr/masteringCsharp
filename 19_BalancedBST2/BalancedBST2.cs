@@ -25,7 +25,7 @@ namespace AlgorithmsDataStructures2
     {
         public BSTNode Root;
 
-        int[] BSTArray; // временный массив для ключей дерева
+        public int[] BSTArray; // временный массив для ключей дерева
 
         public BalancedBST()
         {
