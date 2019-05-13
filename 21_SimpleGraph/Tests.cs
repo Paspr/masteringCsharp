@@ -60,7 +60,7 @@ namespace AlgorithmsDataStructures2
             }
             Console.WriteLine("Test removing an edge");
             testG.RemoveEdge(0, 4);
-            if (testG.IsEdge(0, 4)==false && testG.m_adjacency[0, 4] == 0)
+            if (testG.IsEdge(0, 4)==false && testG.m_adjacency[0, 4] == 0 && testG.m_adjacency[4, 0] == 0)
             {
                 Console.WriteLine("OK");
             }

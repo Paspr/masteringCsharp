@@ -48,6 +48,7 @@ namespace AlgorithmsDataStructures2
             for (int i=0; i<vertex.Length; i++)
             {
                 m_adjacency[v, i] = 0;
+                m_adjacency[i, v] = 0;
             }
             vertex[v] = null;
         }
@@ -55,7 +56,7 @@ namespace AlgorithmsDataStructures2
         public bool IsEdge(int v1, int v2)
         {
             // true если есть ребро между вершинами v1 и v2
-            if (m_adjacency[v1, v2] == 1)
+            if (m_adjacency[v1, v2] == 1 || m_adjacency[v2, v1] == 1)
             {
                return true;
             }
@@ -68,6 +69,7 @@ namespace AlgorithmsDataStructures2
             if (v1!=v2)
             {
                 m_adjacency[v1, v2] = 1;
+                m_adjacency[v2, v1] = 1;
             }
         }
 
@@ -77,6 +79,7 @@ namespace AlgorithmsDataStructures2
             if (v1 != v2)
             {
                 m_adjacency[v1, v2] = 0;
+                m_adjacency[v2, v1] = 0;
             }
         }
     }
