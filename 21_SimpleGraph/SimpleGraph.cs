@@ -56,7 +56,7 @@ namespace AlgorithmsDataStructures2
         public bool IsEdge(int v1, int v2)
         {
             // true если есть ребро между вершинами v1 и v2
-            if (m_adjacency[v1, v2] == 1 || m_adjacency[v2, v1] == 1)
+            if (m_adjacency[v1, v2] == 1 && m_adjacency[v2, v1] == 1)
             {
                return true;
             }
@@ -66,21 +66,19 @@ namespace AlgorithmsDataStructures2
         public void AddEdge(int v1, int v2)
         {
             // добавление ребра между вершинами v1 и v2
-            if (v1!=v2)
-            {
+           
                 m_adjacency[v1, v2] = 1;
                 m_adjacency[v2, v1] = 1;
-            }
+            
         }
 
         public void RemoveEdge(int v1, int v2)
         {
             // удаление ребра между вершинами v1 и v2
-            if (v1 != v2)
-            {
+            
                 m_adjacency[v1, v2] = 0;
                 m_adjacency[v2, v1] = 0;
-            }
+            
         }
     }
 }
