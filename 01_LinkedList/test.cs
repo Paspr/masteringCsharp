@@ -1,160 +1,183 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AlgorithmsDataStructures
 {
 
-    public class Node
+    class Program
     {
-        public int value;
-        public Node next;
-        public Node(int _value) { value = _value; }
-    }
-
-    public class LinkedList
-    {
-        public Node head;
-        public Node tail;
-
-        public LinkedList()
+        // sum of integer values from two lists
+        // if the length of the lists is equal
+        // then return the list with elements
+        // which are the sum of corresponding elements of the original lists
+        static LinkedList ListSummer(LinkedList a, LinkedList b)
         {
-            head = null;
-            tail = null;
-        }
-
-        public void AddInTail(Node _item)
-        {
-            if (head == null) head = _item;
-            else tail.next = _item;
-            tail = _item;
-        }
-
-        public Node Find(int _value)
-        {
-            Node node = head;
-            while (node != null)
-            {
-                if (node.value == _value) return node;
-                node = node.next;
-            }
-            return null;
-        }
-
-        public List<Node> FindAll(int _value)                   
-        {
-            List<Node> nodes = new List<Node>();
-            Node node = head;
-            while (node != null)
-            {
-                if (node.value == _value) nodes.Add(node);
-                node = node.next;
-            }
-            foreach (Node element in nodes)                   // печать элементов списка для проверки работы метода
-            {
-                Console.WriteLine(element);
-            }
-            return nodes;
-        }
-
-        public bool Remove(int _value)
-        {
-            if (Find(_value) == null) return false;                 // если значения нет в списке
-            if (head == null) return false;                         // если список пуст
+            LinkedList nodes = new LinkedList();
+            if (a.Count() != b.Count()) return nodes;              // if the length of the lists is different then return empty list
             else
             {
-                    Node CurrentNode = head;
-                    Node PreviousNode = null;
-                    while (CurrentNode != null)
-                    {
-                        if (CurrentNode.value == _value)
-                        {
-
-                        if (head.next == null)                              // если удаляется элемент из списка с одним элементом
-                        {
-                            head = null;
-                            tail = null;
-                            return true;                                    // если узел был удален
-                        }
-
-                        if (head.value == CurrentNode.value)        // если элемент находится в начале списка
-                            {
-                            
-                            head = head.next;
-                                return true; // если узел был удален
-                            }
-                            else
-                            {
-                            if (CurrentNode.next == null)           // если элемент находится последним в списке
-                            {
-                                PreviousNode.next = null;
-                                tail = PreviousNode;
-                                return true; // если узел был удален
-                            }
-                            else                                    // элемент находится в середине списка
-                            {
-                                PreviousNode.next = CurrentNode.next;
-                                return true; // если узел был удален
-                            }
-                        }
-                        }
-                        PreviousNode = CurrentNode;
-                        CurrentNode = CurrentNode.next;
-                    }
-                    return true; // если узел был удален
-            }
-        }
-
-        public void RemoveAll(int _value) // удаления всех узлов по заданному значению
-        {
-            int length = Count();
-            for (int i=0; i < length; i++)
-            { 
-                Remove(_value);
-            }
-        }
-
-        public void Clear() // очистка всего списка
-        {
-            head = null;
-            tail = null;
-        }
-
-        public int Count() // подсчет количества элементов в списке
-        {
-            if (head == null) return 0;
-            else
-            { 
-                Node node = head;
-                int i = 0;
-                while (node != null)
+                int sum = 0;
+                Node nodeA = a.head;
+                Node nodeB = b.head;
+                while (nodeA != null)
                 {
-                    i = i + 1;
-                    node = node.next;
+                    sum = sum+nodeA.value + nodeB.value;           
+                    nodes.AddInTail(new Node(sum));                
+                    nodeA = nodeA.next;
+                    nodeB = nodeB.next;
+                    sum = 0;                                       // set sum to zero before new iteration
                 }
-                return i;
+                return nodes;
             }
         }
 
-        public void InsertAfter(Node _nodeAfter, Node _nodeToInsert) // вставка узла после заданного
+        
+        static void Print (LinkedList a)
+        // print list on screen
         {
-            Node CurrentNode = head;
-            if ((_nodeAfter==null) & (head==null))      // если _nodeAfter = null и список пустой, 
-            {                                           // добавить новый элемент первым в списке 
-                _nodeToInsert.next = head;
-                head = _nodeToInsert;
-                tail = head;
-            }
-            while (CurrentNode != null)
+            Node node = a.head;
+            while (node != null)
             {
-                if (CurrentNode.value == _nodeAfter.value)
-                {
-                   _nodeAfter.next = CurrentNode.next;
-                   _nodeToInsert.next = _nodeAfter.next;
-                   CurrentNode.next = _nodeToInsert;
-                   if (tail.next!=null) tail = CurrentNode.next;
-                }
-                CurrentNode = CurrentNode.next;
+                Console.Write($"{node.value} ");
+                node = node.next;
+            }
+            Console.WriteLine();
+        }
+
+        static void Main(string[] args)
+        {
+            // Test of summing two of equal lengh lists
+            Console.WriteLine("Test of summing two of equal length lists");
+            LinkedList one = new LinkedList();
+            one.AddInTail(new Node(55));
+            one.AddInTail(new Node(10));
+            one.AddInTail(new Node(10));
+            LinkedList two = new LinkedList();
+            two.AddInTail(new Node(55));
+            two.AddInTail(new Node(10));
+            two.AddInTail(new Node(20));
+            LinkedList ResultList = ListSummer(one, two);
+            if (ResultList.head.value == 110 && ResultList.head.next.value == 20 && ResultList.tail.value == 30
+                && ResultList.tail.next == null)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of summing two of different length lists
+            Console.WriteLine("Test of summing two of different length lists");
+            LinkedList three = new LinkedList();
+            LinkedList ResultListDIfferentLength = ListSummer(one, three);
+            if (ResultListDIfferentLength.head == null && ResultListDIfferentLength.tail == null)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of removing one element
+            Console.WriteLine("Test of removing one element");
+            one.Remove(55);
+            if (one.head.value == 10 && one.tail.value == 10 && one.tail.next == null)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of removing all elements
+            Console.WriteLine("Test of removing all elements");
+            one.RemoveAll(10);
+            if (one.head == null && one.tail == null)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of removing an element from the empty list
+            Console.WriteLine("Test of removing an element from the empty list");
+            if (one.Remove(10) == false)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of removing an element that is not in the list
+            Console.WriteLine("Test of removing an element that is not in the list");
+            if (two.Remove(107) == false)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of counting the nodes in the list
+            Console.WriteLine("Test of counting the nodes in the list");
+            if (one.Count() == 0 && two.Count() == 3)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test inserting node after the specified one
+            Console.WriteLine("Test of inserting node after the specified one");
+            one.InsertAfter(null, new Node(22));            // the list is empty, insertion into the beginning of the list
+            Node n2 = new Node(200);
+            Node n3 = new Node(100);
+            Node n4 = new Node(50);
+            Node n5 = new Node(5);
+            one.InsertAfter(new Node(22), n2);
+            one.InsertAfter(n2, n3);
+            one.InsertAfter(n2, n4);
+            one.InsertAfter(n3, n5);
+            if (one.Count() == 5 && one.head.value == 22 && one.head.next.value == 200 && one.head.next.next.value == 50
+                && one.head.next.next.next.value == 100 && one.tail.value == 5 && one.tail.next == null)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // Test of clearing the list
+            Console.WriteLine("Test of clearing the list");
+            one.Clear();
+            if (one.head == null && one.tail == null)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
+            }
+            // find all nodes by the specified value
+            Console.WriteLine("Test of finding all the nodes by the specified value");
+            two.AddInTail(new Node(15));
+            two.AddInTail(new Node(15));
+            two.AddInTail(new Node(15));
+            if (two.FindAll(15).Count() == 3)
+            {
+                Console.WriteLine("OK");
+            }
+            else
+            {
+                Console.WriteLine("FAIL");
             }
         }
     }
 }
+
