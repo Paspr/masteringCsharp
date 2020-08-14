@@ -2,10 +2,11 @@
 
 This is a repo for my works on data structures.  
 
-| Data Structure | Description | Implementation | Tests |  
-| :---: | --- | | --- | :---: |  
-| LinkedList | | [link](01_LinkedList/Program.cs) | [link](01_LinkedList/test.cs) |  
-  
+| Data Structure  | Description  | Implementation  | Tests  |
+|---|---|---|---|
+| LinkedList  |   | [link](01_LinkedList/Program.cs)  | [link](01_LinkedList/test.cs)  |
+|   |   |   |   |
+
 1.1 LinkedList [implementation](01_LinkedList/test.cs)  
 1.2 DoubleLinkedList [implementation](02_DoubleLinkedList/test2.cs)  
 1.3 DynamicArray [implementation](03_DynamicArray/DynArr.cs), [tests](03_DynamicArray/tests.cs)  
