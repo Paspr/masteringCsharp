@@ -2,8 +2,8 @@
 
 This is a repo for my works on data structures.  
 
-| Data Structure | Description | Implementation | Tests |
-| :---: | --- | :---: |
+| Data Structure | Description | Implementation | Tests |  
+| :---: | --- | | --- | :---: |  
 | LinkedList | | [link](01_LinkedList/Program.cs) | [link](01_LinkedList/test.cs) |  
   
 1.1 LinkedList [implementation](01_LinkedList/test.cs)  
